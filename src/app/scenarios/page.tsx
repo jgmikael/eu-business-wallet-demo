@@ -15,7 +15,7 @@ const scenarios = {
         payload: 'JSON-LD VC 2.0',
         protocol: 'OpenID4VCI',
         trustServices: 'eSignature (registry)',
-        details: 'Finnish Trade Register issues a CompanyIdentityCredential containing EconomicOperator data and Mandate for Maria Virtanen. The credential is signed with the registry's eSignature and delivered to Maria's EU Business Wallet via OpenID4VCI protocol.'
+        details: `Finnish Trade Register issues a CompanyIdentityCredential containing EconomicOperator data and Mandate for Maria Virtanen. The credential is signed with the registry's eSignature and delivered to Maria's EU Business Wallet via OpenID4VCI protocol.`
       },
       {
         number: 2,
@@ -25,7 +25,7 @@ const scenarios = {
         payload: 'Stored as JSON-LD VC',
         protocol: 'N/A (local)',
         trustServices: 'Wallet encryption',
-        details: 'Maria's wallet stores the credential securely. The wallet validates the signature against the Trade Register's DID, checks the SHACL constraints (legalName required, registrationNumber format, etc.), and confirms the credential is valid.'
+        details: `Maria's wallet stores the credential securely. The wallet validates the signature against the Trade Register's DID, checks the SHACL constraints (legalName required, registrationNumber format, etc.), and confirms the credential is valid.`
       },
       {
         number: 3,
@@ -35,7 +35,7 @@ const scenarios = {
         payload: 'Presentation request',
         protocol: 'OpenID4VP',
         trustServices: 'N/A',
-        details: 'Maria attempts to access a public procurement portal. The service sends an OpenID4VP presentation request asking for proof of company representation with specific scope (e.g., "FullRepresentation" or "FinancialMatters").'
+        details: `Maria attempts to access a public procurement portal. The service sends an OpenID4VP presentation request asking for proof of company representation with specific scope (e.g., "FullRepresentation" or "FinancialMatters").`
       },
       {
         number: 4,
@@ -45,7 +45,7 @@ const scenarios = {
         payload: 'N/A',
         protocol: 'N/A',
         trustServices: 'User authentication',
-        details: 'Maria's wallet displays the presentation request: "Public Procurement Portal requests proof that you are authorized to represent Suomi Innovations Oy in procurement matters." Maria reviews and consents.'
+        details: `Maria's wallet displays the presentation request: "Public Procurement Portal requests proof that you are authorized to represent Suomi Innovations Oy in procurement matters." Maria reviews and consents.`
       },
       {
         number: 5,
@@ -55,7 +55,7 @@ const scenarios = {
         payload: 'JSON-LD VP (Verifiable Presentation)',
         protocol: 'OpenID4VP',
         trustServices: 'Holder signature',
-        details: 'Wallet creates a Verifiable Presentation containing the CompanyIdentityCredential. The presentation is signed by Maria (proving possession) and sent to the public service.'
+        details: `Wallet creates a Verifiable Presentation containing the CompanyIdentityCredential. The presentation is signed by Maria (proving possession) and sent to the public service.`
       },
       {
         number: 6,
@@ -65,7 +65,7 @@ const scenarios = {
         payload: 'Validates JSON-LD VP',
         protocol: 'OpenID4VP (response)',
         trustServices: 'Signature verification + SHACL',
-        details: 'Service validates: (1) Trade Register signature is valid, (2) Maria's holder signature proves possession, (3) SHACL constraints are met (Mandate scope = "FullRepresentation", validFrom/validUntil dates are current). Access granted.'
+        details: `Service validates: (1) Trade Register signature is valid, (2) Maria's holder signature proves possession, (3) SHACL constraints are met (Mandate scope = "FullRepresentation", validFrom/validUntil dates are current). Access granted.`
       }
     ]
   },
@@ -81,7 +81,7 @@ const scenarios = {
         payload: 'JSON-LD (semantic)',
         protocol: 'N/A',
         trustServices: 'N/A',
-        details: 'Tax authority prepares an administrative decision notice. The semantic model includes: issuer (TaxAuthority), recipient (EconomicOperator), decision type, effective date, and appeal rights. Serialized as JSON-LD using EU Business Wallet vocabulary.'
+        details: `Tax authority prepares an administrative decision notice. The semantic model includes: issuer (TaxAuthority), recipient (EconomicOperator), decision type, effective date, and appeal rights. Serialized as JSON-LD using EU Business Wallet vocabulary.`
       },
       {
         number: 2,
@@ -91,7 +91,7 @@ const scenarios = {
         payload: 'JSON-LD + eSignature',
         protocol: 'N/A',
         trustServices: 'eSeal (qualified)',
-        details: 'Tax authority applies a qualified eSeal to the JSON-LD document. The eSeal proves: (1) the document originates from the tax authority, (2) the document has not been altered. A qualified timestamp is also applied, proving the document existed at a specific time.'
+        details: `Tax authority applies a qualified eSeal to the JSON-LD document. The eSeal proves: (1) the document originates from the tax authority, (2) the document has not been altered. A qualified timestamp is also applied, proving the document existed at a specific time.`
       },
       {
         number: 3,
@@ -101,7 +101,7 @@ const scenarios = {
         payload: 'AS4 message envelope',
         protocol: 'eDelivery / AS4',
         trustServices: 'Transport-level TLS',
-        details: 'The signed JSON-LD document is wrapped in an AS4 message envelope. The envelope includes routing metadata (sender, receiver access points, message ID). The message is submitted to the government's eDelivery access point.'
+        details: `The signed JSON-LD document is wrapped in an AS4 message envelope. The envelope includes routing metadata (sender, receiver access points, message ID). The message is submitted to the government's eDelivery access point.`
       },
       {
         number: 4,
@@ -111,7 +111,7 @@ const scenarios = {
         payload: 'AS4 envelope',
         protocol: 'eDelivery / AS4',
         trustServices: 'TLS + AS4 receipts',
-        details: 'The sender access point looks up the receiver's access point (company's eDelivery endpoint) and transmits the message. AS4 protocol ensures reliable delivery with receipts and error handling.'
+        details: `The sender access point looks up the receiver's access point (company's eDelivery endpoint) and transmits the message. AS4 protocol ensures reliable delivery with receipts and error handling.`
       },
       {
         number: 5,
@@ -121,7 +121,7 @@ const scenarios = {
         payload: 'Structured evidence',
         protocol: 'QERDS',
         trustServices: 'Qualified timestamp + signature',
-        details: 'A Qualified Electronic Registered Delivery Service (QERDS) provider issues delivery evidence. This includes: (1) timestamp of submission, (2) timestamp of delivery, (3) proof that recipient access point accepted the message. The evidence is itself signed and timestamped.'
+        details: `A Qualified Electronic Registered Delivery Service (QERDS) provider issues delivery evidence. This includes: (1) timestamp of submission, (2) timestamp of delivery, (3) proof that recipient access point accepted the message. The evidence is itself signed and timestamped.`
       },
       {
         number: 6,
@@ -131,7 +131,7 @@ const scenarios = {
         payload: 'JSON-LD evidence',
         protocol: 'eDelivery (receipt)',
         trustServices: 'Qualified delivery proof',
-        details: 'Company's eDelivery access point delivers the administrative notice to the company's system. A delivery receipt is sent back through the AS4 network. The QERDS provider issues final delivery evidence to the tax authority, which can be used as legal proof that the notice was delivered at a specific time.'
+        details: `Company's eDelivery access point delivers the administrative notice to the company's system. A delivery receipt is sent back through the AS4 network. The QERDS provider issues final delivery evidence to the tax authority, which can be used as legal proof that the notice was delivered at a specific time.`
       }
     ]
   }

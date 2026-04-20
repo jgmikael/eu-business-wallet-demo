@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
 import Link from 'next/link'
+import ClientLayout from '@/components/ClientLayout'
 
 export const metadata: Metadata = {
   title: 'EU Business Wallet - Technical Reference Architecture',
@@ -25,26 +26,9 @@ export default function RootLayout({
           </div>
         </header>
 
-        <nav>
-          <div className="container">
-            <ul>
-              <li><Link href="/">🏠 Home</Link></li>
-              <li><Link href="/architecture">🏛️ Architecture</Link></li>
-              <li><Link href="/semantic">🔗 Semantic Core</Link></li>
-              <li><Link href="/payloads">📄 Payloads</Link></li>
-              <li><Link href="/protocols">🔄 Protocols</Link></li>
-              <li><Link href="/trust">🔐 Trust</Link></li>
-              <li><Link href="/governance">⚖️ Governance</Link></li>
-              <li><Link href="/scenarios">📋 Scenarios</Link></li>
-            </ul>
-          </div>
-        </nav>
-
-        <main>
-          <div className="container">
-            {children}
-          </div>
-        </main>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
 
         <footer>
           <div className="container">

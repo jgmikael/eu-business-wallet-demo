@@ -1,14 +1,20 @@
+'use client'
+
+import { useLanguage } from '@/contexts/LanguageContext'
+
 export default function Home() {
+  const { t } = useLanguage()
   return (
     <>
       <section>
-        <h2>Welcome to the EU Business Wallet Architecture Demonstrator</h2>
+        <h2>{t.home.title} - {t.home.subtitle}</h2>
         
+        <p style={{ fontSize: '1.1em' }}>
+          <strong>{t.home.tagline}</strong>
+        </p>
+
         <p>
-          This interactive demonstration presents the <strong>technical reference architecture</strong> for 
-          the future EU Business Wallet. It illustrates a six-layer interoperability model where semantic 
-          foundations remain stable while syntax bindings, credential formats, and exchange protocols are 
-          treated as replaceable components.
+          {t.home.description}
         </p>
 
         <div style={{
