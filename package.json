@@ -1,0 +1,40 @@
+{
+  "name": "eu-business-wallet-demo",
+  "version": "1.0.0",
+  "description": "Interactive demonstration of EU Business Wallet technical reference architecture",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "eu-business-wallet",
+    "verifiable-credentials",
+    "semantic-interoperability",
+    "rdf",
+    "w3c-vc",
+    "openid4vc",
+    "eidas",
+    "trust-services"
+  ],
+  "author": "Mikael af Hällström",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgmikael/eu-business-wallet-demo.git"
+  }
+}

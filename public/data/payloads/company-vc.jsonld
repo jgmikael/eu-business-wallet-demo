@@ -1,0 +1,57 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://ebw.europa.eu/vocabulary/",
+    {
+      "ebw": "https://ebw.europa.eu/vocabulary/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ],
+  "id": "urn:uuid:3f7a6e2b-4c1d-4e8f-9a3b-1c2d3e4f5a6b",
+  "type": ["VerifiableCredential", "CompanyIdentityCredential"],
+  "issuer": {
+    "id": "did:ebsi:zExample123CompanyRegistry",
+    "name": "Finnish Trade Register"
+  },
+  "validFrom": "2024-01-15T00:00:00Z",
+  "validUntil": "2029-01-15T23:59:59Z",
+  "credentialSubject": {
+    "id": "did:ebsi:zExample456ExampleCompany",
+    "type": "EconomicOperator",
+    "legalName": "Suomi Innovations Oy",
+    "registrationNumber": "FI12345678",
+    "holdsIdentifier": {
+      "type": "VATIdentifier",
+      "vatNumber": "FI12345678",
+      "validFrom": "2020-03-01T00:00:00Z"
+    },
+    "hasRepresentative": {
+      "type": "NaturalPersonRepresentative",
+      "firstName": "Maria",
+      "familyName": "Virtanen",
+      "actsUnderMandate": {
+        "type": "Mandate",
+        "scopeOfMandate": "Full representation in all company matters",
+        "validFrom": "2024-01-01T00:00:00Z",
+        "validUntil": "2026-12-31T23:59:59Z",
+        "grantsAuthorisation": {
+          "type": "Authorisation",
+          "description": "Authorized to sign contracts, access business services, and represent company in EU procedures"
+        }
+      }
+    },
+    "holdsCertificate": {
+      "type": "CompanyCertificate",
+      "issuedBy": "Finnish Trade Register",
+      "validFrom": "2020-01-15T00:00:00Z"
+    }
+  },
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "ecdsa-rdfc-2019",
+    "created": "2024-01-15T10:30:00Z",
+    "verificationMethod": "did:ebsi:zExample123CompanyRegistry#key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "zExample...SignatureValue...abc123"
+  }
+}

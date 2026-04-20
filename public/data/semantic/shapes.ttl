@@ -1,0 +1,142 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ebw: <https://ebw.europa.eu/vocabulary/> .
+@prefix ebw-shape: <https://ebw.europa.eu/shapes/> .
+
+# SHACL Application Profile for EU Business Wallet
+# Defines constraints for wallet-based credential exchange
+
+ebw-shape:EconomicOperatorShape a sh:NodeShape ;
+    sh:targetClass ebw:EconomicOperator ;
+    sh:property [
+        sh:path ebw:legalName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minLength 1 ;
+        sh:maxLength 500 ;
+        sh:description "Legal name is mandatory and must be between 1-500 characters"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:registrationNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:pattern "^[A-Z0-9]{1,20}$" ;
+        sh:description "Registration number is mandatory, alphanumeric, max 20 chars"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:holdsIdentifier ;
+        sh:class ebw:VATIdentifier ;
+        sh:minCount 0 ;
+        sh:description "May hold zero or more VAT identifiers"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:hasRepresentative ;
+        sh:class ebw:NaturalPersonRepresentative ;
+        sh:minCount 1 ;
+        sh:description "Must have at least one authorized representative"@en ;
+    ] .
+
+ebw-shape:VATIdentifierShape a sh:NodeShape ;
+    sh:targetClass ebw:VATIdentifier ;
+    sh:property [
+        sh:path ebw:vatNumber ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:pattern "^[A-Z]{2}[A-Z0-9]{2,13}$" ;
+        sh:description "VAT number must start with 2-letter country code"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:validFrom ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Valid from date is mandatory"@en ;
+    ] .
+
+ebw-shape:NaturalPersonRepresentativeShape a sh:NodeShape ;
+    sh:targetClass ebw:NaturalPersonRepresentative ;
+    sh:property [
+        sh:path ebw:firstName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minLength 1 ;
+        sh:maxLength 100 ;
+    ] ;
+    sh:property [
+        sh:path ebw:familyName ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minLength 1 ;
+        sh:maxLength 100 ;
+    ] ;
+    sh:property [
+        sh:path ebw:actsUnderMandate ;
+        sh:class ebw:Mandate ;
+        sh:minCount 1 ;
+        sh:description "Representative must act under at least one mandate"@en ;
+    ] .
+
+ebw-shape:MandateShape a sh:NodeShape ;
+    sh:targetClass ebw:Mandate ;
+    sh:property [
+        sh:path ebw:scopeOfMandate ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:description "Scope of mandate must be specified"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:validFrom ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path ebw:validUntil ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path ebw:grantsAuthorisation ;
+        sh:class ebw:Authorisation ;
+        sh:minCount 1 ;
+        sh:description "Mandate must grant at least one specific authorisation"@en ;
+    ] .
+
+ebw-shape:CompanyCertificateShape a sh:NodeShape ;
+    sh:targetClass ebw:CompanyCertificate ;
+    sh:property [
+        sh:path ebw:issuedBy ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Certificate must specify issuing authority"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:validFrom ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+    ] .
+
+ebw-shape:DeliveryEvidenceShape a sh:NodeShape ;
+    sh:targetClass ebw:DeliveryEvidence ;
+    sh:property [
+        sh:path ebw:deliveryTimestamp ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "Delivery evidence must include timestamp"@en ;
+    ] ;
+    sh:property [
+        sh:path ebw:deliveryStatus ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:in ( "delivered" "failed" "pending" ) ;
+        sh:description "Delivery status must be one of: delivered, failed, pending"@en ;
+    ] .
