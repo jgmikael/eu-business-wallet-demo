@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompanyCredential xmlns="https://ebw.europa.eu/schema/v1"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    credentialId="3f7a6e2b-4c1d-4e8f-9a3b-1c2d3e4f5a6b"
+                    credentialType="CompanyIdentityCredential">
+  
+  <Issuer>
+    <IssuerID>FI-TradeRegister</IssuerID>
+    <IssuerName>Finnish Trade Register</IssuerName>
+  </Issuer>
+  
+  <IssuedAt>2024-01-15T10:30:00Z</IssuedAt>
+  <ValidFrom>2024-01-15T00:00:00Z</ValidFrom>
+  <ValidUntil>2029-01-15T23:59:59Z</ValidUntil>
+  
+  <CredentialSubject>
+    <EconomicOperator>
+      <LegalName>Suomi Innovations Oy</LegalName>
+      <RegistrationNumber>FI12345678</RegistrationNumber>
+      
+      <VATIdentifier>
+        <VATNumber>FI12345678</VATNumber>
+        <ValidFrom>2020-03-01T00:00:00Z</ValidFrom>
+      </VATIdentifier>
+      
+      <Representative>
+        <FirstName>Maria</FirstName>
+        <FamilyName>Virtanen</FamilyName>
+        
+        <Mandate>
+          <ScopeOfMandate>Full representation in all company matters</ScopeOfMandate>
+          <ValidFrom>2024-01-01T00:00:00Z</ValidFrom>
+          <ValidUntil>2026-12-31T23:59:59Z</ValidUntil>
+          
+          <Authorisation>
+            <Description>Authorized to sign contracts, access business services, and represent company in EU procedures</Description>
+          </Authorisation>
+        </Mandate>
+      </Representative>
+      
+      <CompanyCertificate>
+        <IssuedBy>Finnish Trade Register</IssuedBy>
+        <ValidFrom>2020-01-15T00:00:00Z</ValidFrom>
+      </CompanyCertificate>
+    </EconomicOperator>
+  </CredentialSubject>
+  
+  <Signature>
+    <Algorithm>ECDSA</Algorithm>
+    <Created>2024-01-15T10:30:00Z</Created>
+    <SignatureValue>Example...SignatureValue...abc123</SignatureValue>
+  </Signature>
+  
+</CompanyCredential>

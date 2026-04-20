@@ -1,0 +1,93 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ebw-concept: <https://ebw.europa.eu/concepts/> .
+
+# SKOS Concept Scheme for Credential Types
+
+ebw-concept:CredentialTypeScheme a skos:ConceptScheme ;
+    skos:prefLabel "EU Business Wallet Credential Types"@en ;
+    skos:definition "Classification of credential types used in EU Business Wallet ecosystem"@en .
+
+ebw-concept:CompanyIdentity a skos:Concept ;
+    skos:inScheme ebw-concept:CredentialTypeScheme ;
+    skos:prefLabel "Company Identity Credential"@en ;
+    skos:definition "Verifiable credential containing basic company identification information"@en ;
+    skos:notation "CMP-ID" .
+
+ebw-concept:MandateCredential a skos:Concept ;
+    skos:inScheme ebw-concept:CredentialTypeScheme ;
+    skos:prefLabel "Mandate Credential"@en ;
+    skos:definition "Credential evidencing authorization to act on behalf of a legal entity"@en ;
+    skos:notation "MND" ;
+    skos:related ebw-concept:CompanyIdentity .
+
+ebw-concept:VATRegistration a skos:Concept ;
+    skos:inScheme ebw-concept:CredentialTypeScheme ;
+    skos:prefLabel "VAT Registration Credential"@en ;
+    skos:definition "Credential evidencing VAT registration status"@en ;
+    skos:notation "VAT" .
+
+ebw-concept:CompanyRegistration a skos:Concept ;
+    skos:inScheme ebw-concept:CredentialTypeScheme ;
+    skos:prefLabel "Company Registration Certificate"@en ;
+    skos:definition "Official certificate of company registration from commercial registry"@en ;
+    skos:notation "CMP-REG" ;
+    skos:broader ebw-concept:CompanyIdentity .
+
+# SKOS Concept Scheme for Mandate Scopes
+
+ebw-concept:MandateScopeScheme a skos:ConceptScheme ;
+    skos:prefLabel "Mandate Scope Classification"@en ;
+    skos:definition "Classification of mandate authorization scopes"@en .
+
+ebw-concept:FullRepresentation a skos:Concept ;
+    skos:inScheme ebw-concept:MandateScopeScheme ;
+    skos:prefLabel "Full Representation"@en ;
+    skos:definition "Authorization to fully represent the company in all matters"@en ;
+    skos:notation "FULL" .
+
+ebw-concept:LimitedRepresentation a skos:Concept ;
+    skos:inScheme ebw-concept:MandateScopeScheme ;
+    skos:prefLabel "Limited Representation"@en ;
+    skos:definition "Authorization limited to specific actions or domains"@en ;
+    skos:notation "LIMITED" ;
+    skos:narrower ebw-concept:FinancialMatters , ebw-concept:AdministrativeMatters .
+
+ebw-concept:FinancialMatters a skos:Concept ;
+    skos:inScheme ebw-concept:MandateScopeScheme ;
+    skos:prefLabel "Financial Matters"@en ;
+    skos:definition "Authorization limited to financial transactions and decisions"@en ;
+    skos:notation "FIN" ;
+    skos:broader ebw-concept:LimitedRepresentation .
+
+ebw-concept:AdministrativeMatters a skos:Concept ;
+    skos:inScheme ebw-concept:MandateScopeScheme ;
+    skos:prefLabel "Administrative Matters"@en ;
+    skos:definition "Authorization limited to administrative actions"@en ;
+    skos:notation "ADM" ;
+    skos:broader ebw-concept:LimitedRepresentation .
+
+# SKOS Concept Scheme for Delivery Status
+
+ebw-concept:DeliveryStatusScheme a skos:ConceptScheme ;
+    skos:prefLabel "Delivery Status Codes"@en ;
+    skos:definition "Status codes for message/document delivery evidence"@en .
+
+ebw-concept:Delivered a skos:Concept ;
+    skos:inScheme ebw-concept:DeliveryStatusScheme ;
+    skos:prefLabel "Delivered"@en ;
+    skos:definition "Message successfully delivered to recipient"@en ;
+    skos:notation "DELIVERED" .
+
+ebw-concept:Failed a skos:Concept ;
+    skos:inScheme ebw-concept:DeliveryStatusScheme ;
+    skos:prefLabel "Failed"@en ;
+    skos:definition "Delivery attempt failed"@en ;
+    skos:notation "FAILED" .
+
+ebw-concept:Pending a skos:Concept ;
+    skos:inScheme ebw-concept:DeliveryStatusScheme ;
+    skos:prefLabel "Pending"@en ;
+    skos:definition "Delivery in progress"@en ;
+    skos:notation "PENDING" .

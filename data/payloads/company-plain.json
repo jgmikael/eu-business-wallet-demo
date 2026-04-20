@@ -1,0 +1,42 @@
+{
+  "credentialId": "3f7a6e2b-4c1d-4e8f-9a3b-1c2d3e4f5a6b",
+  "credentialType": "CompanyIdentity",
+  "issuer": {
+    "id": "FI-TradeRegister",
+    "name": "Finnish Trade Register"
+  },
+  "issuedAt": "2024-01-15T10:30:00Z",
+  "validFrom": "2024-01-15T00:00:00Z",
+  "validUntil": "2029-01-15T23:59:59Z",
+  "subject": {
+    "companyId": "FI12345678",
+    "legalName": "Suomi Innovations Oy",
+    "registrationNumber": "FI12345678",
+    "vatNumber": "FI12345678",
+    "vatValidFrom": "2020-03-01",
+    "representative": {
+      "firstName": "Maria",
+      "familyName": "Virtanen",
+      "mandate": {
+        "scope": "Full representation in all company matters",
+        "validFrom": "2024-01-01",
+        "validUntil": "2026-12-31",
+        "authorizations": [
+          "Sign contracts",
+          "Access business services",
+          "Represent company in EU procedures"
+        ]
+      }
+    },
+    "certificate": {
+      "type": "CompanyRegistration",
+      "issuedBy": "Finnish Trade Register",
+      "issuedAt": "2020-01-15"
+    }
+  },
+  "signature": {
+    "algorithm": "ECDSA",
+    "created": "2024-01-15T10:30:00Z",
+    "signatureValue": "Example...SignatureValue...abc123"
+  }
+}

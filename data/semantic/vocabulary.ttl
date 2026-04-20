@@ -1,0 +1,127 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ebw: <https://ebw.europa.eu/vocabulary/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+
+# Ontology metadata
+ebw: a owl:Ontology ;
+    rdfs:label "EU Business Wallet Vocabulary"@en ;
+    rdfs:comment "Core vocabulary for EU Business Wallet interoperability"@en ;
+    owl:versionInfo "1.0.0" .
+
+# Core Classes
+
+ebw:EconomicOperator a owl:Class ;
+    rdfs:label "Economic Operator"@en ;
+    rdfs:comment "A legal entity engaged in economic activity (company, organization)"@en ;
+    rdfs:subClassOf org:Organization .
+
+ebw:NaturalPersonRepresentative a owl:Class ;
+    rdfs:label "Natural Person Representative"@en ;
+    rdfs:comment "A natural person authorized to act on behalf of an economic operator"@en ;
+    rdfs:subClassOf foaf:Person .
+
+ebw:Mandate a owl:Class ;
+    rdfs:label "Mandate"@en ;
+    rdfs:comment "An authorization granting specific powers to a representative"@en .
+
+ebw:VATIdentifier a owl:Class ;
+    rdfs:label "VAT Identifier"@en ;
+    rdfs:comment "Value Added Tax registration identifier"@en .
+
+ebw:CompanyCertificate a owl:Class ;
+    rdfs:label "Company Certificate"@en ;
+    rdfs:comment "Official registration certificate for a legal entity"@en .
+
+ebw:Authorisation a owl:Class ;
+    rdfs:label "Authorisation"@en ;
+    rdfs:comment "Permission to perform specific actions or access resources"@en .
+
+ebw:DeliveryEvidence a owl:Class ;
+    rdfs:label "Delivery Evidence"@en ;
+    rdfs:comment "Proof of successful delivery of a message or document"@en .
+
+# Object Properties
+
+ebw:hasRepresentative a owl:ObjectProperty ;
+    rdfs:label "has representative"@en ;
+    rdfs:domain ebw:EconomicOperator ;
+    rdfs:range ebw:NaturalPersonRepresentative .
+
+ebw:actsUnderMandate a owl:ObjectProperty ;
+    rdfs:label "acts under mandate"@en ;
+    rdfs:domain ebw:NaturalPersonRepresentative ;
+    rdfs:range ebw:Mandate .
+
+ebw:holdsIdentifier a owl:ObjectProperty ;
+    rdfs:label "holds identifier"@en ;
+    rdfs:domain ebw:EconomicOperator ;
+    rdfs:range ebw:VATIdentifier .
+
+ebw:holdsCertificate a owl:ObjectProperty ;
+    rdfs:label "holds certificate"@en ;
+    rdfs:domain ebw:EconomicOperator ;
+    rdfs:range ebw:CompanyCertificate .
+
+ebw:grantsAuthorisation a owl:ObjectProperty ;
+    rdfs:label "grants authorisation"@en ;
+    rdfs:domain ebw:Mandate ;
+    rdfs:range ebw:Authorisation .
+
+# Datatype Properties
+
+ebw:legalName a owl:DatatypeProperty ;
+    rdfs:label "legal name"@en ;
+    rdfs:domain ebw:EconomicOperator ;
+    rdfs:range xsd:string .
+
+ebw:registrationNumber a owl:DatatypeProperty ;
+    rdfs:label "registration number"@en ;
+    rdfs:domain ebw:EconomicOperator ;
+    rdfs:range xsd:string .
+
+ebw:vatNumber a owl:DatatypeProperty ;
+    rdfs:label "VAT number"@en ;
+    rdfs:domain ebw:VATIdentifier ;
+    rdfs:range xsd:string .
+
+ebw:issuedBy a owl:DatatypeProperty ;
+    rdfs:label "issued by"@en ;
+    rdfs:domain ebw:CompanyCertificate ;
+    rdfs:range xsd:string .
+
+ebw:validFrom a owl:DatatypeProperty ;
+    rdfs:label "valid from"@en ;
+    rdfs:range xsd:dateTime .
+
+ebw:validUntil a owl:DatatypeProperty ;
+    rdfs:label "valid until"@en ;
+    rdfs:range xsd:dateTime .
+
+ebw:firstName a owl:DatatypeProperty ;
+    rdfs:label "first name"@en ;
+    rdfs:domain ebw:NaturalPersonRepresentative ;
+    rdfs:range xsd:string .
+
+ebw:familyName a owl:DatatypeProperty ;
+    rdfs:label "family name"@en ;
+    rdfs:domain ebw:NaturalPersonRepresentative ;
+    rdfs:range xsd:string .
+
+ebw:scopeOfMandate a owl:DatatypeProperty ;
+    rdfs:label "scope of mandate"@en ;
+    rdfs:domain ebw:Mandate ;
+    rdfs:range xsd:string .
+
+ebw:deliveryTimestamp a owl:DatatypeProperty ;
+    rdfs:label "delivery timestamp"@en ;
+    rdfs:domain ebw:DeliveryEvidence ;
+    rdfs:range xsd:dateTime .
+
+ebw:deliveryStatus a owl:DatatypeProperty ;
+    rdfs:label "delivery status"@en ;
+    rdfs:domain ebw:DeliveryEvidence ;
+    rdfs:range xsd:string .
